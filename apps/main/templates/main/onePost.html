@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+{% block head %}
+{% load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+  <div class="ml-4">
+    <h1>{{blogname}}</h1>
+    <h3>{{blogdescription}}</h3>
+    <div class="row mt-5">
+      <div class="col-8">
+        <div class="mb-0 entry-meta">
+          <span>{{post.publish_date}} by {{post.author.display_name}}</span>
+        </div>
+        <h4>{{post.title}}</h4>
+        <p>{{post.content}}</p>
+      </div>
+      <div class="col-4">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

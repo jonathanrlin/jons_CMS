@@ -1,0 +1,14 @@
+.entry-meta{
+  color: #767676;
+  font-size: 11px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1818em;
+  padding-bottom: 0.25em;
+  text-transform: uppercase;
+}
+
+.link-unstyled {
+  font-style: inherit;
+  color: inherit;
+}

@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+  <h1 class="text-center">View user</h1>
+  <h4>Nice name:</h4>
+  <p>{{user.nicename}}</p>
+  <h4>Display name:</h4>
+  <p>{{user.display_name}}</p>
+  <h4>Email:</h4>
+  <p>{{user.email}}</p>
+  <h4>Role:</h4>
+  <p>{{user.role_key.name}}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+  <h1 class="text-center mb-4">All Posts</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publish Date</th>
+        <th scope="col">Modified Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in all_posts %}
+      <tr>
+        <td>{{post.title}}</td>
+        <td>{{post.author.display_name}}</td>
+        <td>{{post.publish_date}}</td>
+        <td>{{post.updated_at}}</td>
+        <td>
+          <a href="#">View</a>
+          <span> | </span>
+          <a href="/admin/post/edit/{{post.id}}/">Edit</a>
+          <span> | </span>
+          <div class="d-inline-block">
+            <form action="/admin/post/delPost/" method="POST">
+            {% csrf_token %}
+              <input type="hidden" name="inputId" value="{{post.id}}">
+              <button type="submit" class="btn-link p-0 border-0 bg-white">Delete</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="/admin/post/new/" class="btn btn-primary">Add Post</a>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+  <h1 class="text-center">Edit user</h1>
+  <ul class="list-unstyled mt-3">
+  {% if messages %}
+    {% for message in messages %}
+    <li class="text-left text-danger">{{ message }}</li>
+    {% endfor %}
+  {% endif %}
+  </ul>
+  <form action="/admin/user/editUser/" method="POST">
+  {% csrf_token %}
+    <input type="hidden" name="inputId" value="{{user.id}}">
+    <div class="form-group">
+      <label>Nice name:</label>
+      <input type="text" name="inputNiceName" class="form-control" value="{{user.nicename}}">
+    </div>
+    <div class="form-group">
+      <label>Display name:</label>
+      <input type="text" name="inputDisName" class="form-control" value="{{user.display_name}}">
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <p class="form-control-plaintext">{{user.email}}</p>
+      <input type="hidden" name="inputEmail" value="{{user.email}}">
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" name="inputPassword" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Confirm password:</label>
+      <input type="password" name="inputConPassword" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Role:</label>
+      <select class="form-control" name="inputRoleKey">
+        {% for role in all_roles %}
+          {% if role.key == user.role_key.key %}
+          <option value="{{role.key}}" selected="selected">{{role.name}}</option>
+          {% else %}
+          <option value="{{role.key}}">{{role.name}}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    <a href="/admin/user/" class="btn btn-dark">Cancel</a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+  <h1 class="text-center mb-4">All Users</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nice name</th>
+        <th scope="col">Display name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in all_users %}
+      <tr>
+        <td>{{user.nicename}}</td>
+        <td>{{user.display_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role_key.name}}</td>
+        <td>
+          <a href="/admin/user/{{user.id}}/">View</a>
+          <span> | </span>
+          <a href="/admin/user/edit/{{user.id}}/">Edit</a>
+          <span> | </span>
+          <div class="d-inline-block">
+            <form action="/admin/user/delUser/" method="POST">
+            {% csrf_token %}
+              <input type="hidden" name="inputId" value="{{user.id}}">
+              <button type="submit" class="btn-link p-0 border-0 bg-white">Delete</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="/admin/user/new/" class="btn btn-primary">Add User</a>
+</div>
+{% endblock %}

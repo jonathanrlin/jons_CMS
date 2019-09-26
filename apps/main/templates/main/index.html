@@ -1,0 +1,48 @@
+{% extends "main/base.html" %}
+{% block head %}
+{% load static%}
+{% endblock %}
+
+{% block body %}
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Welcome to Jonathan's CMS!</h1>
+      <p>This is a website for people who want to build a blog. It allows a user with limited expertise to add, modify, and remove contents, comments, or users from a website.</p>
+      <p><a class="btn btn-primary btn-lg" href="/login/admin/" role="button">Login as an admin</a></p>
+      <p><a class="btn btn-primary btn-lg" href="login/user/" role="button">Login as an user</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Content Management</h2>
+        <ol class="ml-n3">
+          <li>Add, modify, and remove posts.</li>
+          <li>Delayed the publish time.</li>
+          <li>Dashboard to keep track on the statistic of every posts.</li>
+        </ol>
+      </div>
+      <div class="col-md-4">
+        <h2>Comment Management</h2>
+        <ol class="ml-n3">
+          <li>Add, modify, and remove comments.</li>
+          <li>Delayed publish.</li>
+          <li>Delayed publish.</li>
+        </ol>
+      </div>
+      <div class="col-md-4">
+        <h2>User Management</h2>
+        <ol class="ml-n3">
+          <li>Add, modify, and remove users.</li>
+          <li>Three different role for different access level.</li>
+        </ol>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+{% endblock %}
